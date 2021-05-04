@@ -1,0 +1,9 @@
+<h1>customer data</h1>
+
+<H3> Please fill up the details</H3>
+<form method="POST" class="post-form" enctype="multipart/form-data">
+    {% csrf_token %}
+ <table>{{form.as_table}}</table>
+ 
+<button type='submit'>Submit</button>
+</form>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Food Delivery App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    body{
+      background-image: url("{% static 'food/images/paper.jpg' %}") ;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-light" style="background-color:#e6ebe7;">
+    <a href="#" class="navbar-brand" style="background-color:#FFCC33;
+    color:#000000;border-width:10px;border-color:#FFCC33;border-style:solid;border-spacing:30px;border-radius: 5px;">Food Delivery App</a>
+    <a class="navbar-link btn-lg" href="{% url 'index' %}" style="background-color:#FFCC33;color:#000000;">Twisty Tales</a>
+<a href="{% url 'admin:index' %}" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Admin</a>
+    <a href="{% url 'admin:index' %}" class="navbar-link btn-lg" style="background-color:#FFCC33;color:#000000;">Upload-food</a>
+</nav>
+<br>
+{% block content %}
+<div class="card-columns">
+    {% for food in food_shelf %}
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{ food.picture.url }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ food.name }}</h5>
+    <p class="card-text">{{ food.description }}</p>
+   <div class="card-footer bg-transparent border-dark">
+   <p class="card-title">{{food.price}}</p>
+   <center>
+  
+       <a class="nav-link" href="ordernow">ordernow</a>
+    </center>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>
